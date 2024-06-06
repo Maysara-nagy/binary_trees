@@ -15,9 +15,7 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
-
+      
     - name: Change file permissions
       run: chmod -R +x .
 
@@ -29,7 +27,7 @@ jobs:
         git commit -m "Set executable bit for all files" || echo "No changes to commit"
 
     - name: Push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.A7A }}
-      run: |
-        git push origin HEAD:${{ github.ref }}
+      uses: ad-m/github-push-action@main
+      with:
+        github_token: ${{ secrets.A7A }}
+        branch: ${{ github.ref }}
