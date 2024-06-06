@@ -27,7 +27,7 @@ jobs:
         git commit -m "Set executable bit for all files" || echo "No changes to commit"
 
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@main
       with:
         github_token: ${{ secrets.A7A }}
         branch: ${{ github.ref }}
